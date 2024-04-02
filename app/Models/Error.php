@@ -31,4 +31,9 @@ class Error extends Model
     {
         $builder->update(['status' => ErrorStatus::Pending]);
     }
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
 }
