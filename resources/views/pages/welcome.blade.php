@@ -89,7 +89,7 @@ state([
         <h2 class="text-4xl font-bold text-center">Contributors</h2>
         <div class="flex flex-wrap justify-center gap-3 mt-12">
             @foreach($contributors as $contributor)
-                <a class="h-20 w-20 shrink-0 overflow-hidden rounded-full" href="{{ $contributor->github_profile_url }}">
+                <a class="h-20 w-20 shrink-0 overflow-hidden rounded-full" href="{{ $contributor->github_profile_url }}" target="_blank">
                     <img class="w-full h-full rounded-full object-cover will-change-transform hover:scale-110" src="https://ui-avatars.com/api?name={{ $contributor->name }}" alt="">
                 </a>
             @endforeach
