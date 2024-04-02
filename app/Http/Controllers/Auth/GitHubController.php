@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Exception;
 use Filament\Facades\Filament;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
 class GitHubController extends Controller
@@ -25,7 +26,7 @@ class GitHubController extends Controller
             'github_refresh_token' => $githubUser->refreshToken,
         ]);
 
-        Filament::auth()->login($user);
+        Auth::login($user);
 
         return redirect()->route('filament.app.pages.dashboard');
     }
