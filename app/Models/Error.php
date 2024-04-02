@@ -23,16 +23,6 @@ class Error extends Model
         $builder->update(['status' => ErrorStatus::Pending]);
     }
 
-    public function scopeMarkAsSuccess(Builder $builder): void
-    {
-        $builder->update(['status' => ErrorStatus::Pending]);
-    }
-
-    public function scopeMarkAsRejected(Builder $builder): void
-    {
-        $builder->update(['status' => ErrorStatus::Pending]);
-    }
-
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
