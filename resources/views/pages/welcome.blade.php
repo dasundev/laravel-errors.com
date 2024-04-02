@@ -33,7 +33,7 @@ state(['latestErrors' => Error::latest()->take(3)->get()]);
         </div>
     </section>
     <section class="max-w-6xl mx-auto px-5 lg:px-0 pt-16">
-        <h1 class="text-4xl font-bold text-center">Latest Errors</h1>
+        <h2 class="text-4xl font-bold text-center">Latest Errors</h2>
         <div class="flex flex-col gap-4 mt-12">
             @foreach($latestErrors as $index => $error)
                 <a wire:navigate href="{{ route('errors.index', $error) }}">
@@ -43,7 +43,7 @@ state(['latestErrors' => Error::latest()->take(3)->get()]);
         </div>
     </section>
     <section class="max-w-6xl mx-auto px-5 lg:px-0 pt-16">
-        <h1 class="text-4xl font-bold text-center">Contributors</h1>
+        <h2 class="text-4xl font-bold text-center">Contributors</h2>
         <div class="flex flex-wrap justify-center gap-3 mt-12">
             <a class="h-20 w-20 shrink-0 overflow-hidden rounded-full" href="#">
                 <img class="w-full h-full rounded-full object-cover will-change-transform hover:scale-110" src="https://ui-avatars.com/api?name=random" alt="">
