@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Exception;
 use Filament\Facades\Filament;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -18,15 +19,14 @@ class GitHubController extends Controller
     {
         $githubUser = Socialite::driver('github')->user();
 
-        $user = User::updateOrCreate([
+        $user = User::updateOrCreate(['email' => $githubUser->email], [
             'name' => $githubUser->name,
-            'email' => $githubUser->email,
             'github_token' => $githubUser->token,
             'github_refresh_token' => $githubUser->refreshToken,
         ]);
 
         Filament::auth()->login($user);
 
-        return redirect()->route('filament.home');
+        return redirect()->route('filament.app.pages.dashboard');
     }
 }
