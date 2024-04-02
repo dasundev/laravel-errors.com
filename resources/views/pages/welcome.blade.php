@@ -1,6 +1,10 @@
 <?php
 
 use function Livewire\Volt\{state};
+use App\Models\Error;
+
+state(['popularErrors' => Error::take(3)->get()]);
+state(['latestErrors' => Error::latest()->take(3)->get()]);
 
 ?>
 
@@ -20,42 +24,26 @@ use function Livewire\Volt\{state};
                 </a>
             </div>
             <div class="hidden lg:flex flex-col gap-4 absolute top-20 right-[-400px] w-full max-w-4xl">
-                <a href="#" class="transition-all hover:scale-105">
-                    <div class="ml-40 flex flex-col items-start justify-center gap-5 bg-amber-200 p-5 rounded-xl shadow">
-                        <div class="text-purple-800 font-medium">Illuminate\Encryption\MissingAppKeyException</div>
-                        <div class="text-lg leading-none font-medium">No application encryption key has been specified.</div>
-                    </div>
-                </a>
-                <a href="#" class="transition-all hover:scale-105">
-                    <div class="ml-20 flex flex-col items-start justify-center gap-5 bg-amber-200 p-5 rounded-xl shadow">
-                        <div class="text-purple-800 font-medium">InvalidArgumentException</div>
-                        <div class="text-lg leading-none font-medium">View [welcome] not found.</div>
-                    </div>
-                </a>
-                <a href="#" class="transition-all hover:scale-105">
-                    <div class="flex flex-col items-start justify-center gap-5 bg-amber-200 p-5 rounded-xl shadow">
-                        <div class="text-purple-800 font-medium">Illuminate\Contracts\Container\BindingResolutionException</div>
-                        <div class="text-lg leading-none font-medium">Target class [App\Http\Controllers\DashboardController] does not exist.</div>
-                    </div>
-                </a>
+                @foreach($popularErrors as $index => $error)
+                    <a href="#" @class(['transition-all hover:scale-105', $index === 0 ? 'ml-40' : null, $index === 1 ? 'ml-20' : null])>
+                        <div class="flex flex-col items-start justify-center gap-5 bg-amber-200 p-5 rounded-xl shadow">
+                            <div class="text-purple-800 font-medium">{{ $error->exception }}</div>
+                            <div class="text-lg leading-none font-medium">{{ $error->title }}</div>
+                        </div>
+                    </a>
+                @endforeach
             </div>
         </div>
     </section>
     <section class="max-w-6xl mx-auto px-5 lg:px-0 pt-16">
         <h1 class="text-4xl font-bold text-center">Latest Errors</h1>
         <div class="flex flex-col gap-4 mt-12">
-            <a href="#" class="flex flex-col items-start justify-center gap-5 bg-purple-100 p-5 rounded-xl shadow shadow-purple-300 hover:bg-purple-200 transition-colors">
-                <div class="text-purple-800 font-medium">Illuminate\Encryption\MissingAppKeyException</div>
-                <div class="text-lg leading-none font-medium">No application encryption key has been specified.</div>
-            </a>
-            <a href="#" class="flex flex-col items-start justify-center gap-5 bg-purple-100 p-5 rounded-xl shadow shadow-purple-300 hover:bg-purple-200 transition-colors">
-                <div class="text-purple-800 font-medium">InvalidArgumentException</div>
-                <div class="text-lg leading-none font-medium">View [welcome] not found.</div>
-            </a>
-            <a href="#" class="flex flex-col items-start justify-center gap-5 bg-purple-100 p-5 rounded-xl shadow shadow-purple-300 hover:bg-purple-200 transition-colors">
-                <div class="text-purple-800 font-medium">Illuminate\Contracts\Container\BindingResolutionException</div>
-                <div class="text-lg leading-none font-medium">Target class [App\Http\Controllers\DashboardController] does not exist.</div>
-            </a>
+            @foreach($latestErrors as $index => $error)
+                <a href="#" class="flex flex-col items-start justify-center gap-5 bg-purple-100 p-5 rounded-xl shadow shadow-purple-300 hover:bg-purple-200 transition-colors">
+                    <div class="text-purple-800 font-medium">{{ $error->exception }}</div>
+                    <div class="text-lg leading-none font-medium">{{ $error->title }}</div>
+                </a>
+            @endforeach
         </div>
     </section>
     <section class="max-w-6xl mx-auto px-5 lg:px-0 pt-16">
