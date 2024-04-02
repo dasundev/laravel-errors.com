@@ -12,7 +12,12 @@ mount(function (Error $error) {
 ?>
 
 <div>
-    <section class="max-w-4xl mx-auto px-5 lg:px-0 pt-5">
-        {{ $error->solution }}
-    </section>
+    <div class="mx-auto bg-amber-400">
+        <div class="max-w-5xl mx-auto py-10 ">
+            <x-error :$error class="bg-amber-200 hover:bg-amber-200" />
+        </div>
+    </div>
+    <div class="max-w-5xl mx-auto py-10">
+        <div>{{ $error->solution }}</div>
+    </div>
 </div>
