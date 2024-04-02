@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 
 enum ErrorStatus: string implements HasColor, HasLabel
 {
+    case Draft = 'draft';
     case Pending = 'pending';
     case Approved = 'approved';
     case Rejected = 'rejected';
@@ -15,6 +16,7 @@ enum ErrorStatus: string implements HasColor, HasLabel
     public function getColor(): string|array|null
     {
         return match ($this) {
+            self::Draft => 'gray',
             self::Pending => 'warning',
             self::Approved => 'success',
             self::Rejected => 'danger',
