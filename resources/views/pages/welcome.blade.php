@@ -15,7 +15,7 @@ use function Livewire\Volt\{state};
                 <div class="max-w-md">
                     <p class="text-xl text-black font-medium">Our goal is help the Laravel community to find the best solution for the errors they encounter.</p>
                 </div>
-                <a href="{{ route('filament.app.auth.login') }}" class="inline-flex" wire:navigate.hover>
+                <a href="{{ route('filament.app.auth.login') }}" class="inline-flex">
                     <button class="text-md lg:text-lg font-semibold bg-lime-600 px-5 py-2 text-white rounded-xl shadow hover:bg-lime-700 transition-colors duration-300">Share your error experience with us</button>
                 </a>
             </div>
