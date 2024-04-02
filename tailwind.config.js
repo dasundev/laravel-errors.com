@@ -6,7 +6,9 @@ export default {
       "./resources/**/*.blade.php",
   ],
   theme: {
-    extend: {},
+      fontFamily: {
+          'exception': ['Jetbrains Mono', 'system-ui']
+      }
   },
   plugins: [typography],
 }
