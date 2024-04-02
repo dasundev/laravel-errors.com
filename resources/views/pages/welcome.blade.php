@@ -20,7 +20,7 @@ state(['latestErrors' => Error::latest()->take(3)->get()]);
                     <p class="text-xl text-black font-medium">Our goal is help the Laravel community to find the best solution for the errors they encounter.</p>
                 </div>
                 <div
-                    x-data="{ modalOpen: true }"
+                    x-data="{ modalOpen: false }"
                     @keydown.escape.window="modalOpen = false"
                     class="inline-flex"
                 >
