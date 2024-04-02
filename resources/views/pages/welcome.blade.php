@@ -49,7 +49,7 @@ state([
                                  x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                                  class="relative w-full py-6 bg-amber-200 px-7 sm:max-w-lg sm:rounded-lg">
                                 <div class="flex flex-col items-center justify-between gap-5">
-                                    <h3 class="text-lg font-semibold">Hey there! Ready to Share?</h3>
+                                    <h3 class="text-lg font-semibold">Together we save developers time. ❤️</h3>
                                     <a class="w-full" href="{{ route('auth.redirect') }}">
                                         <button type="button" class="w-full inline-flex justify-center items-center gap-2 text-md lg:text-lg font-semibold bg-lime-600 px-5 py-2 text-white rounded-xl shadow hover:bg-lime-700 transition-colors duration-300">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
