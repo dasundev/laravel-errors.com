@@ -4,11 +4,13 @@ namespace App\Filament\App\Resources;
 
 use App\Filament\App\Resources\ErrorResource\Pages;
 use App\Models\Error;
+use Closure;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 
 class ErrorResource extends Resource
 {
@@ -21,12 +23,31 @@ class ErrorResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('title')
+                    ->afterStateUpdated(function (Forms\Get $get, Forms\Set $set, ?string $state) {
+                        if (! $get('is_slug_changed_manually') && filled($state)) {
+                            $set('slug', Str::slug($state));
+                        }
+                    })
+                    ->reactive()
+                    ->placeholder('No application encryption key has been specified.')
+                    ->required(),
+                Forms\Components\TextInput::make('slug')
+                    ->afterStateUpdated(function (Forms\Set $set) {
+                        $set('is_slug_changed_manually', true);
+                    })
+                    ->placeholder('no-application-encryption-key-has-been-specified')
+                    ->readOnly()
                     ->required(),
                 Forms\Components\TextInput::make('exception')
+                    ->columnSpanFull()
+                    ->placeholder('Illuminate\Encryption\MissingAppKeyException')
                     ->required(),
                 Forms\Components\MarkdownEditor::make('solution')
                     ->required()
                     ->columnSpanFull(),
+                Forms\Components\Hidden::make('is_slug_changed_manually')
+                    ->default(false)
+                    ->dehydrated(false),
             ]);
     }
 
