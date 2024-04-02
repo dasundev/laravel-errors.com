@@ -10,7 +10,8 @@
         "gehrisandro/tailwind-merge-laravel": "^1.2",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
-        "livewire/volt": "^1.6"
+        "livewire/volt": "^1.6",
+        "spatie/laravel-markdown": "^2.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
