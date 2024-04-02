@@ -90,7 +90,7 @@ state([
         <div class="flex flex-wrap justify-center gap-3 mt-12">
             @foreach($contributors as $contributor)
                 <a class="h-20 w-20 shrink-0 overflow-hidden rounded-full" href="{{ $contributor->github_profile_url }}" target="_blank">
-                    <img class="w-full h-full rounded-full object-cover will-change-transform hover:scale-110" src="https://ui-avatars.com/api?name={{ $contributor->name }}" alt="">
+                    <img class="w-full h-full rounded-full object-cover will-change-transform hover:scale-110" src="{{ Gravatar::fallback("https://ui-avatars.com/api?name=$contributor->name")->get($contributor->email) }}" alt="{{ $contributor->name }}">
                 </a>
             @endforeach
         </div>
