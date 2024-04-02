@@ -43,6 +43,7 @@ class ErrorResource extends Resource
                     ->placeholder('Illuminate\Encryption\MissingAppKeyException')
                     ->required(),
                 Forms\Components\MarkdownEditor::make('solution')
+                    ->hint('Tell us how you solved this error?')
                     ->required()
                     ->columnSpanFull(),
                 Forms\Components\Hidden::make('is_slug_changed_manually')
