@@ -60,7 +60,6 @@ class AppPanelProvider extends PanelProvider
             ->bootUsing(function () {
                 $this->app->bind(FilamentLogoutResponse::class, LogoutResponse::class);
                 $this->app->bind(FilamentLoginResponse::class, LoginResponse::class);
-            })
-            ->databaseNotifications();
+            });
     }
 }
