@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('errors', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug')->unique();
             $table->string('exception');
             $table->longText('solution');
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
