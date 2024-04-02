@@ -75,6 +75,9 @@ class ErrorResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('exception')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('user.email')
+                    ->visible(auth()->user()->isAdmin())
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
                     ->searchable(),
