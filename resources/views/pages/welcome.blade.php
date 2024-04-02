@@ -25,7 +25,7 @@ state(['latestErrors' => Error::latest()->take(3)->get()]);
             </div>
             <div class="hidden lg:flex flex-col gap-4 absolute top-20 right-[-400px] w-full max-w-4xl">
                 @foreach($popularErrors as $index => $error)
-                    <a href="#" @class(['transition-all hover:scale-105', $index === 0 ? 'ml-40' : null, $index === 1 ? 'ml-20' : null])>
+                    <a wire:navigate href="{{ route('errors.index', $error) }}" @class(['transition-all hover:scale-105', $index === 0 ? 'ml-40' : null, $index === 1 ? 'ml-20' : null])>
                         <div class="flex flex-col items-start justify-center gap-5 bg-amber-200 p-5 rounded-xl shadow">
                             <div class="text-purple-800 font-medium">{{ $error->exception }}</div>
                             <div class="text-lg leading-none font-medium">{{ $error->title }}</div>
@@ -39,7 +39,7 @@ state(['latestErrors' => Error::latest()->take(3)->get()]);
         <h1 class="text-4xl font-bold text-center">Latest Errors</h1>
         <div class="flex flex-col gap-4 mt-12">
             @foreach($latestErrors as $index => $error)
-                <a href="#" class="flex flex-col items-start justify-center gap-5 bg-purple-100 p-5 rounded-xl shadow shadow-purple-300 hover:bg-purple-200 transition-colors">
+                <a wire:navigate href="{{ route('errors.index', $error) }}" class="flex flex-col items-start justify-center gap-5 bg-purple-100 p-5 rounded-xl shadow shadow-purple-300 hover:bg-purple-200 transition-colors">
                     <div class="text-purple-800 font-medium">{{ $error->exception }}</div>
                     <div class="text-lg leading-none font-medium">{{ $error->title }}</div>
                 </a>
