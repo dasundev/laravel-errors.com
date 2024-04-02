@@ -1,4 +1,4 @@
-<footer class="py-20">
+<footer class="pt-32 pb-20">
     <div class="flex flex-col items-center justify-center gap-5">
         <p class="text-lg font-medium">An open-source project by Dasun Tharanga</p>
         <div class="flex gap-2">
