@@ -1,9 +1,11 @@
 <?php
 
-use function Livewire\Volt\{state, mount};
+use function Livewire\Volt\{state, mount, title};
 use App\Models\Error;
 
 state(['error']);
+
+title(fn () => $this->error->title);
 
 mount(function (Error $error) {
     $this->error = $error;
