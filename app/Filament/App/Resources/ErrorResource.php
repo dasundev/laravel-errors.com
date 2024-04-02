@@ -71,12 +71,14 @@ class ErrorResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('exception')
+                Tables\Columns\TextColumn::make('id')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('user.email')
                     ->visible(auth()->user()->isAdmin())
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('title')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('exception')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
