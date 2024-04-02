@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "creativeorange/gravatar": "~1.0",
         "filament/filament": "^3.2",
         "gehrisandro/tailwind-merge-laravel": "^1.2",
         "laravel/framework": "^11.0",

@@ -3,7 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -20,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'github_username',
         'github_token',
         'github_refresh_token'
     ];
@@ -34,6 +37,15 @@ class User extends Authenticatable
         'remember_token',
         'github_token',
         'github_refresh_token'
+    ];
+
+    /**
+     * The attributes that should be added with the result.
+     *
+     * @return array<string, string>
+     */
+    protected $appends = [
+        'github_profile_url'
     ];
 
     /**
@@ -52,5 +64,15 @@ class User extends Authenticatable
     public function isAdmin(): bool
     {
         return $this->email === 'hello@dasun.dev';
+    }
+
+    public function errors(): HasMany
+    {
+        return $this->hasMany(Error::class);
+    }
+
+    public function githubProfileUrl(): Attribute
+    {
+        return Attribute::get(fn () => $this->github_username ? "https://github.com/$this->github_username" : null);
     }
 }
