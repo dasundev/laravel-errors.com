@@ -7,6 +7,7 @@ use App\Models\User;
 use Exception;
 use Filament\Facades\Filament;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
 
 class GitHubController extends Controller
@@ -18,16 +19,22 @@ class GitHubController extends Controller
 
     public function callback()
     {
-        $githubUser = Socialite::driver('github')->user();
+        try {
+            $githubUser = Socialite::driver('github')->user();
 
-        $user = User::updateOrCreate(['email' => $githubUser->email], [
-            'name' => $githubUser->name,
-            'github_token' => $githubUser->token,
-            'github_refresh_token' => $githubUser->refreshToken,
-        ]);
+            $user = User::updateOrCreate(['email' => $githubUser->email], [
+                'name' => $githubUser->name,
+                'github_token' => $githubUser->token,
+                'github_refresh_token' => $githubUser->refreshToken,
+            ]);
 
-        Auth::login($user);
+            Auth::login($user);
 
-        return redirect()->route('filament.app.pages.dashboard');
+            return redirect()->route('filament.app.pages.dashboard');
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+        }
+
+        return back();
     }
 }
