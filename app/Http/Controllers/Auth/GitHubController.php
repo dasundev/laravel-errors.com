@@ -22,11 +22,17 @@ class GitHubController extends Controller
         try {
             $githubUser = Socialite::driver('github')->user();
 
-            $user = User::updateOrCreate(['email' => $githubUser->email], [
-                'name' => $githubUser->name,
-                'github_token' => $githubUser->token,
-                'github_refresh_token' => $githubUser->refreshToken,
-            ]);
+            $user = User::updateOrCreate(
+                [
+                    'email' => $githubUser->email
+                ],
+                [
+                    'github_username' => $githubUser->getNickname(),
+                    'name' => $githubUser->name,
+                    'github_token' => $githubUser->token,
+                    'github_refresh_token' => $githubUser->refreshToken,
+                ]
+            );
 
             Auth::login($user);
 
