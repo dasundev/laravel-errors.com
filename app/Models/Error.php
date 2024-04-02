@@ -6,6 +6,7 @@ use App\Enums\ErrorStatus;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Error extends Model
 {
@@ -30,6 +31,11 @@ class Error extends Model
     public function scopeMarkAsRejected(Builder $builder): void
     {
         $builder->update(['status' => ErrorStatus::Pending]);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function getRouteKeyName(): string
