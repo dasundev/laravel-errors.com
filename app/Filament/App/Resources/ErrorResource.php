@@ -4,12 +4,12 @@ namespace App\Filament\App\Resources;
 
 use App\Filament\App\Resources\ErrorResource\Pages;
 use App\Models\Error;
-use Closure;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
 class ErrorResource extends Resource
@@ -17,6 +17,14 @@ class ErrorResource extends Resource
     protected static ?string $model = Error::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-bug-ant';
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->when(! auth()->user()->isAdmin(), function (Builder $builder) {
+                return $builder->where('user_id', '=', auth()->id());
+            });
+    }
 
     public static function form(Form $form): Form
     {
