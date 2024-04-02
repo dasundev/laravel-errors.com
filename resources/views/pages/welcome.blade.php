@@ -19,9 +19,44 @@ state(['latestErrors' => Error::latest()->take(3)->get()]);
                 <div class="max-w-md">
                     <p class="text-xl text-black font-medium">Our goal is help the Laravel community to find the best solution for the errors they encounter.</p>
                 </div>
-                <a href="{{ route('filament.app.auth.login') }}" class="inline-flex">
-                    <button class="text-md lg:text-lg font-semibold bg-lime-600 px-5 py-2 text-white rounded-xl shadow hover:bg-lime-700 transition-colors duration-300">Share your error experience with us</button>
-                </a>
+                <div
+                    x-data="{ modalOpen: true }"
+                    @keydown.escape.window="modalOpen = false"
+                    class="inline-flex"
+                >
+                    <button @click="modalOpen=true" class="text-md lg:text-lg font-semibold bg-lime-600 px-5 py-2 text-white rounded-xl shadow hover:bg-lime-700 transition-colors duration-300">Share your error experience with us</button>
+                    <template x-teleport="body">
+                        <div x-show="modalOpen" class="fixed top-0 left-0 z-[99] flex items-center justify-center w-screen h-screen" x-cloak>
+                            <div x-show="modalOpen"
+                                 x-transition:enter="ease-out duration-300"
+                                 x-transition:enter-start="opacity-0"
+                                 x-transition:enter-end="opacity-100"
+                                 x-transition:leave="ease-in duration-300"
+                                 x-transition:leave-start="opacity-100"
+                                 x-transition:leave-end="opacity-0"
+                                 @click="modalOpen=false" class="absolute inset-0 w-full h-full bg-black bg-opacity-75"></div>
+                            <div x-show="modalOpen"
+                                 x-trap.inert.noscroll="modalOpen"
+                                 x-transition:enter="ease-out duration-300"
+                                 x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                 x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                 x-transition:leave="ease-in duration-200"
+                                 x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                                 x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                 class="relative w-full py-6 bg-amber-200 px-7 sm:max-w-lg sm:rounded-lg">
+                                <div class="flex flex-col items-start justify-between gap-5">
+                                    <h3 class="text-lg font-semibold">Hey there! Ready to Share?</h3>
+                                    <button type="button" class="w-full inline-flex justify-center items-center gap-2 text-md lg:text-lg font-semibold bg-lime-600 px-5 py-2 text-white rounded-xl shadow hover:bg-lime-700 transition-colors duration-300">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.026 2C6.517 2 2.052 6.465 2.052 11.974C2.052 16.38 4.909 20.119 8.873 21.439C9.372 21.529 9.552 21.222 9.552 20.958C9.552 20.721 9.544 20.093 9.541 19.262C6.766 19.864 6.18 17.924 6.18 17.924C5.728 16.772 5.073 16.465 5.073 16.465C4.168 15.846 5.142 15.86 5.142 15.86C6.144 15.93 6.669 16.888 6.669 16.888C7.559 18.412 9.005 17.972 9.571 17.717C9.662 17.072 9.922 16.632 10.206 16.383C7.992 16.132 5.664 15.276 5.664 11.453C5.664 10.366 6.053 9.474 6.688 8.778C6.587 8.525 6.242 7.51 6.787 6.138C6.787 6.138 7.624 5.869 9.529 7.159C10.3426 6.93767 11.1818 6.8247 12.025 6.823C12.8682 6.82437 13.7075 6.93735 14.521 7.159C16.427 5.868 17.263 6.138 17.263 6.138C17.808 7.51 17.466 8.525 17.362 8.778C18.002 9.474 18.386 10.365 18.386 11.453C18.386 15.286 16.056 16.128 13.834 16.375C14.189 16.683 14.509 17.291 14.509 18.221C14.509 19.555 14.497 20.631 14.497 20.958C14.497 21.225 14.675 21.535 15.184 21.437C19.146 20.115 22 16.379 22 11.974C22 6.465 17.535 2 12.026 2Z" fill="white"/>
+                                        </svg>
+                                        Sign in with GitHub
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
             </div>
             <div class="hidden lg:flex flex-col gap-4 absolute top-20 right-[-400px] w-full max-w-4xl">
                 @foreach($popularErrors as $index => $error)
