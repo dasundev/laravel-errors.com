@@ -2,9 +2,13 @@
 
 namespace App\Providers\Filament;
 
-use Filament\Http\Middleware\Authenticate;
+use App\Http\Responses\LogoutResponse;
+use App\Http\Responses\LoginResponse;
+use App\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Http\Responses\Auth\Contracts\LogoutResponse as FilamentLogoutResponse;
+use Filament\Http\Responses\Auth\Contracts\LoginResponse as FilamentLoginResponse;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -25,7 +29,6 @@ class AppPanelProvider extends PanelProvider
         return $panel
             ->id('app')
             ->path('app')
-            ->login()
             ->colors([
                 'primary' => Color::Lime,
             ])
@@ -53,6 +56,10 @@ class AppPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->darkMode(false)
-            ->topNavigation();
+            ->topNavigation()
+            ->bootUsing(function () {
+                $this->app->bind(FilamentLogoutResponse::class, LogoutResponse::class);
+                $this->app->bind(FilamentLoginResponse::class, LoginResponse::class);
+            });
     }
 }
