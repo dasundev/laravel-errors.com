@@ -4,12 +4,12 @@ namespace App\Filament\App\Resources;
 
 use App\Filament\App\Resources\ErrorResource\Pages;
 use App\Models\Error;
-use Closure;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
 class ErrorResource extends Resource
@@ -17,6 +17,14 @@ class ErrorResource extends Resource
     protected static ?string $model = Error::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-bug-ant';
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->when(! auth()->user()->isAdmin(), function (Builder $builder) {
+                return $builder->where('user_id', '=', auth()->id());
+            });
+    }
 
     public static function form(Form $form): Form
     {
@@ -46,6 +54,13 @@ class ErrorResource extends Resource
                     ->hint('Tell us how you solved this error?')
                     ->required()
                     ->columnSpanFull(),
+                Forms\Components\Select::make('status')
+                    ->visible(auth()->user()->isAdmin())
+                    ->options([
+                        'approved' => 'Approved',
+                        'rejected' => 'Rejected'
+                    ])
+                    ->required(),
                 Forms\Components\Hidden::make('is_slug_changed_manually')
                     ->default(false)
                     ->dehydrated(false),
@@ -56,6 +71,11 @@ class ErrorResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('id')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('user.email')
+                    ->visible(auth()->user()->isAdmin())
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('exception')
