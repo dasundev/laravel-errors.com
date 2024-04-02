@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('exception');
             $table->longText('solution');
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->enum('status', ['draft', 'pending', 'approved', 'rejected'])->default('draft');
             $table->timestamps();
         });
     }
