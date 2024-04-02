@@ -54,6 +54,13 @@ class ErrorResource extends Resource
                     ->hint('Tell us how you solved this error?')
                     ->required()
                     ->columnSpanFull(),
+                Forms\Components\Select::make('status')
+                    ->visible(auth()->user()->isAdmin())
+                    ->options([
+                        'approved' => 'Approved',
+                        'rejected' => 'Rejected'
+                    ])
+                    ->required(),
                 Forms\Components\Hidden::make('is_slug_changed_manually')
                     ->default(false)
                     ->dehydrated(false),
