@@ -8,7 +8,7 @@ class Announcement extends Widget
 {
     protected static string $view = 'filament.app.widgets.announcement';
 
-    protected int | string | array $columnSpan = 'full';
+    protected int|string|array $columnSpan = 'full';
 
     protected static bool $isLazy = false;
 }

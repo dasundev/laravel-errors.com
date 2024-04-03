@@ -24,7 +24,7 @@ class User extends Authenticatable
         'password',
         'github_username',
         'github_token',
-        'github_refresh_token'
+        'github_refresh_token',
     ];
 
     /**
@@ -36,7 +36,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
         'github_token',
-        'github_refresh_token'
+        'github_refresh_token',
     ];
 
     /**
@@ -45,7 +45,7 @@ class User extends Authenticatable
      * @return array<string, string>
      */
     protected $appends = [
-        'github_profile_url'
+        'github_profile_url',
     ];
 
     /**

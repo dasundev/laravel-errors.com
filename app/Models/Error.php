@@ -15,7 +15,7 @@ class Error extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'status' => ErrorStatus::class
+        'status' => ErrorStatus::class,
     ];
 
     public function user(): BelongsTo

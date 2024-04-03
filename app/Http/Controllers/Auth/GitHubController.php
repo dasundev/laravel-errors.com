@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Exception;
-use Filament\Facades\Filament;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
@@ -24,7 +23,7 @@ class GitHubController extends Controller
 
             $user = User::updateOrCreate(
                 [
-                    'email' => $githubUser->email
+                    'email' => $githubUser->email,
                 ],
                 [
                     'github_username' => $githubUser->getNickname(),

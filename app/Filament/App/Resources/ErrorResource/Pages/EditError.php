@@ -8,8 +8,6 @@ use App\Models\Error;
 use Filament\Actions;
 use Filament\Forms\Components\Textarea;
 use Filament\Notifications\Actions\Action;
-use Filament\Forms\Form;
-use Filament\Forms\Get;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 use Filament\Support\Colors\Color;
@@ -57,7 +55,7 @@ class EditError extends EditRecord
                 ->color(Color::Red)
                 ->form([
                     Textarea::make('reason')
-                        ->required()
+                        ->required(),
                 ])
                 ->action(function (Error $error, array $data) {
                     $error->markAsRejected();
@@ -72,10 +70,10 @@ class EditError extends EditRecord
                             Action::make('View')
                                 ->icon('heroicon-o-eye')
                                 ->button()
-                                ->url(route('filament.app.resources.errors.edit', $error))
+                                ->url(route('filament.app.resources.errors.edit', $error)),
                         ])
                         ->sendToDatabase($reception);
-                })
+                }),
         ];
     }
 

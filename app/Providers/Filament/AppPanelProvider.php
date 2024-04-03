@@ -2,18 +2,18 @@
 
 namespace App\Providers\Filament;
 
-use App\Http\Responses\LogoutResponse;
-use App\Http\Responses\LoginResponse;
+use App\Filament\App\Widgets;
 use App\Http\Middleware\Authenticate;
+use App\Http\Responses\LoginResponse;
+use App\Http\Responses\LogoutResponse;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Filament\Http\Responses\Auth\Contracts\LogoutResponse as FilamentLogoutResponse;
 use Filament\Http\Responses\Auth\Contracts\LoginResponse as FilamentLoginResponse;
+use Filament\Http\Responses\Auth\Contracts\LogoutResponse as FilamentLogoutResponse;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
-use App\Filament\App\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -39,7 +39,7 @@ class AppPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/App/Widgets'), for: 'App\\Filament\\App\\Widgets')
             ->widgets([
-                Widgets\Announcement::class
+                Widgets\Announcement::class,
             ])
             ->middleware([
                 EncryptCookies::class,
