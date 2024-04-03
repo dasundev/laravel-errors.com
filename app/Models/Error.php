@@ -18,11 +18,6 @@ class Error extends Model
         'status' => ErrorStatus::class
     ];
 
-    public function scopeMarkAsPending(Builder $builder): void
-    {
-        $builder->update(['status' => ErrorStatus::Pending]);
-    }
-
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -31,5 +26,20 @@ class Error extends Model
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    public function scopeMarkAsPending(Builder $builder): void
+    {
+        $builder->update(['status' => ErrorStatus::Pending]);
+    }
+
+    public function scopeMarkAsApproved(Builder $builder): void
+    {
+        $builder->update(['status' => ErrorStatus::Approved]);
+    }
+
+    public function scopeMarkAsRejected(Builder $builder): void
+    {
+        $builder->update(['status' => ErrorStatus::Rejected]);
     }
 }
