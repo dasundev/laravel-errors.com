@@ -7,6 +7,7 @@ use App\Filament\App\Resources\ErrorResource;
 use App\Models\Error;
 use Filament\Actions;
 use Filament\Forms\Components\Textarea;
+use Filament\Notifications\Actions\Action;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Notifications\Notification;
@@ -67,6 +68,12 @@ class EditError extends EditRecord
                         ->danger()
                         ->title('Your error request has been rejected')
                         ->body($data['reason'])
+                        ->actions([
+                            Action::make('View')
+                                ->icon('heroicon-o-eye')
+                                ->button()
+                                ->url(route('filament.app.resources.errors.edit', $error))
+                        ])
                         ->sendToDatabase($reception);
                 })
         ];

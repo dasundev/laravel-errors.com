@@ -30,7 +30,6 @@ class GitHubController extends Controller
                     'github_username' => $githubUser->getNickname(),
                     'name' => $githubUser->name,
                     'github_token' => $githubUser->token,
-                    'github_refresh_token' => $githubUser->refreshToken,
                 ]
             );
 
