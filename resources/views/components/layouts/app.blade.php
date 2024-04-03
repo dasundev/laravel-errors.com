@@ -4,6 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description" content="Our goal is help the Laravel community to find the best solution for the errors they encounter.">
+    <meta name="author" content="Laravel Errors">
+    <meta name="google" content="notranslate">
+    <meta name="robots" content="index, follow">
+    <meta name="applicable-device" content="pc, mobile">
+    <meta name="canonical" content="{{ url()->current() }}">
+    <meta name="keywords" content="laravel, errors, livewire, spatie, filament, nova, error">
 
     <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
 
