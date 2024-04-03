@@ -29,9 +29,12 @@ class GitHubController extends Controller
                     'github_username' => $githubUser->getNickname(),
                     'name' => $githubUser->name,
                     'github_token' => $githubUser->token,
-                    'email_verified_at' => now()
                 ]
             );
+
+            if (! $user->hasVerifiedEmail()) {
+                $user->markEmailAsVerified();
+            }
 
             Auth::login($user);
 
