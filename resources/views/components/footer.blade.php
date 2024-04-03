@@ -1,6 +1,6 @@
 <footer class="p-20">
     <div class="flex flex-col items-center justify-center gap-5">
-        <p class="text-lg font-medium">An open-source project by Dasun Tharanga</p>
+        <p class="text-md lg:text-lg text-center font-medium">An open-source project by Dasun Tharanga</p>
         <div class="flex gap-2">
             <a href="https://x.com/dasundev" target="_blank" class="inline-flex items-center gap-2 text-md lg:text-lg font-semibold bg-lime-600 px-5 py-2 text-white rounded-xl shadow hover:bg-lime-700 transition-colors duration-300">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

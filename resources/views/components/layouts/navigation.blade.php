@@ -1,5 +1,5 @@
 <nav class="bg-amber-400 max-w-full">
-    <div class="max-w-6xl mx-auto px-5 lg:px-0 py-5">
+    <div class="max-w-7xl mx-auto p-5">
         <div class="flex items-center justify-between">
             <a href="/" wire:navigate.hover class="text-xl md:text-2xl lg:text-3xl font-bold">Laravel Errors</a>
             <div class="inline-flex gap-5">

@@ -14,14 +14,14 @@ state([
 
 <div>
     <section class="bg-amber-400 overflow-x-hidden">
-        <div class="relative max-w-6xl mx-auto py-20 lg:py-28 px-5 lg:px-0">
+        <div class="relative max-w-7xl mx-auto py-20 lg:py-28 px-5">
             <div class="max-w-3xl flex flex-col gap-8">
                 <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-black">
                     Laravel errors are not nightmares <br>
                     <span class="text-xl md:text-2xl lg:text-3xl font-semibold leading-none">— if we treat them in the right way.</span>
                 </h1>
                 <div class="max-w-md">
-                    <p class="text-xl text-black font-medium">Our goal is help the Laravel community to find the best solution for the errors they encounter.</p>
+                    <p class="text-xl text-black font-normal">Our goal is help the Laravel community to find the best solution for the errors they encounter.</p>
                 </div>
                 <div
                     x-data="{ modalOpen: false }"
@@ -66,7 +66,7 @@ state([
                     </template>
                 </div>
             </div>
-            <div class="hidden lg:flex flex-col gap-4 absolute top-20 right-[-400px] w-full max-w-4xl">
+            <div class="hidden lg:flex flex-col gap-4 absolute top-20 right-[-300px] w-full max-w-4xl">
                 @foreach($popularErrors as $index => $error)
                     <a wire:navigate href="{{ route('errors.index', $error) }}" @class(['transition-all hover:scale-105', $index === 0 ? 'ml-40' : null, $index === 1 ? 'ml-20' : null])>
                         <x-error :$error class="bg-amber-200 hover:bg-amber-200"/>
@@ -75,8 +75,8 @@ state([
             </div>
         </div>
     </section>
-    <section class="max-w-6xl mx-auto px-5 lg:px-0 pt-16">
-        <h2 class="text-4xl font-bold text-center">Latest Errors</h2>
+    <section class="max-w-7xl mx-auto px-5 pt-10 lg:pt-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-center">Latest Errors</h2>
         <div class="flex flex-col gap-4 mt-12">
             @foreach($latestErrors as $index => $error)
                 <a wire:navigate href="{{ route('errors.index', $error) }}">
@@ -85,12 +85,12 @@ state([
             @endforeach
         </div>
     </section>
-    <section class="max-w-6xl mx-auto px-5 lg:px-0 pt-16">
-        <h2 class="text-4xl font-bold text-center">Contributors</h2>
+    <section class="max-w-7xl mx-auto px-5 pt-10 lg:pt-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-center">Contributors</h2>
         <div class="flex flex-wrap justify-center gap-3 mt-12">
             @foreach($contributors as $contributor)
-                <a class="h-20 w-20 shrink-0 overflow-hidden rounded-full" href="{{ $contributor->github_profile_url }}" target="_blank">
-                    <img class="w-full h-full rounded-full object-cover will-change-transform hover:scale-110" src="{{ Gravatar::fallback("https://ui-avatars.com/api?name=$contributor->name")->get($contributor->email) }}" alt="{{ $contributor->name }}">
+                <a class="h-16 w-16 lg:h-20 lg:w-20 shrink-0 overflow-hidden rounded-full" href="{{ $contributor->github_profile_url }}" target="_blank">
+                    <img class="w-full h-full rounded-full object-cover will-change-transform hover:scale-110 transition" src="{{ Gravatar::fallback("https://ui-avatars.com/api?name=$contributor->name")->get($contributor->email) }}" alt="{{ $contributor->name }}">
                 </a>
             @endforeach
         </div>
