@@ -20,7 +20,6 @@ return new class extends Migration
             $table->rememberToken();
             $table->string('github_username')->unique()->nullable();
             $table->string('github_token')->nullable();
-            $table->string('github_refresh_token')->nullable();
             $table->timestamps();
         });
 
