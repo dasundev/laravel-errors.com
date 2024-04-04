@@ -19,7 +19,7 @@ state([
     <section class="bg-amber-400 overflow-x-hidden">
         <div class="relative max-w-7xl mx-auto py-20 lg:py-28 px-5">
             <div class="max-w-3xl flex flex-col gap-8">
-                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-black">
+                <h1 class="text-4xl lg:text-5xl font-bold text-black">
                     Laravel errors are not nightmares <br>
                     <span class="text-xl md:text-2xl lg:text-3xl font-semibold leading-none">— if we treat them in the right way.</span>
                 </h1>
