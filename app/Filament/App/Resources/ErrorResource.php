@@ -53,7 +53,8 @@ class ErrorResource extends Resource
                 Forms\Components\MarkdownEditor::make('solution')
                     ->hint('Tell us how you solved this error?')
                     ->required()
-                    ->columnSpanFull(),
+                    ->columnSpanFull()
+                    ->fileAttachmentsDirectory('error_screenshots'),
                 Forms\Components\Hidden::make('is_slug_changed_manually')
                     ->default(false)
                     ->dehydrated(false),
