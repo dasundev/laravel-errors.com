@@ -38,7 +38,10 @@
                                 x-
                             >
                                 <a href="{{ route('filament.app.pages.dashboard') }}" class="block w-full pl-5 pr-20 py-2.5 text-left hover:bg-amber-100 disabled:text-gray-500">Dashboard</a>
-                                <a href="#" class="block w-full pl-5 pr-20 py-2.5 text-left hover:bg-amber-100 disabled:text-gray-500">Logout</a>
+                                <form action="/app/logout" method="post">
+                                    @csrf
+                                    <button type="submit" class="block w-full pl-5 pr-20 py-2.5 text-left hover:bg-amber-100 disabled:text-gray-500">Logout</button>
+                                </form>
                             </div>
                         </div>
                     @endauth
