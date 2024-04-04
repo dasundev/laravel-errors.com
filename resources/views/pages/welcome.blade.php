@@ -3,11 +3,14 @@
 use function Livewire\Volt\{state};
 use App\Models\Error;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 
 state([
-    'popularErrors' => Error::take(3)->get(),
-    'latestErrors' => Error::latest()->take(3)->get(),
-    'contributors' => User::whereHas('errors')->get()
+    'popularErrors' => Error::approved()->take(3)->get(),
+    'latestErrors' => Error::approved()->latest()->take(3)->get(),
+    'contributors' => User::whereHas('errors', function (Builder $builder) {
+        $builder->approved();
+    })->get()
 ]);
 
 ?>

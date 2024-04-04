@@ -42,4 +42,9 @@ class Error extends Model
     {
         $builder->update(['status' => ErrorStatus::Rejected]);
     }
+
+    public function scopeApproved(Builder $builder): void
+    {
+        $builder->where('status', '=', ErrorStatus::Approved);
+    }
 }
