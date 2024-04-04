@@ -28,19 +28,25 @@ class Error extends Model
         return 'slug';
     }
 
-    public function scopeMarkAsPending(Builder $builder): void
+    public function markAsPending(): void
     {
-        $builder->update(['status' => ErrorStatus::Pending]);
+        $this->update([
+            'status' => ErrorStatus::Pending
+        ]);
     }
 
-    public function scopeMarkAsApproved(Builder $builder): void
+    public function markAsApproved(): void
     {
-        $builder->update(['status' => ErrorStatus::Approved]);
+        $this->update([
+            'status' => ErrorStatus::Approved
+        ]);
     }
 
-    public function scopeMarkAsRejected(Builder $builder): void
+    public function markAsRejected(): void
     {
-        $builder->update(['status' => ErrorStatus::Rejected]);
+        $this->update([
+            'status' => ErrorStatus::Rejected
+        ]);
     }
 
     public function scopeApproved(Builder $builder): void
