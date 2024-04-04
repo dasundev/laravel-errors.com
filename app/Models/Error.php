@@ -18,16 +18,31 @@ class Error extends Model
         'status' => ErrorStatus::class,
     ];
 
+    /**
+     * The user belongs to the error model.
+     *
+     * @return BelongsTo
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * The route key name for find the model.
+     *
+     * @return string
+     */
     public function getRouteKeyName(): string
     {
         return 'slug';
     }
 
+    /**
+     * Change the model's status as pending.
+     *
+     * @return void
+     */
     public function markAsPending(): void
     {
         $this->update([
@@ -35,6 +50,11 @@ class Error extends Model
         ]);
     }
 
+    /**
+     * Change the model's status as approved.
+     *
+     * @return void
+     */
     public function markAsApproved(): void
     {
         $this->update([
@@ -42,6 +62,11 @@ class Error extends Model
         ]);
     }
 
+    /**
+     * Change the model's status as rejected.
+     *
+     * @return void
+     */
     public function markAsRejected(): void
     {
         $this->update([
@@ -49,6 +74,12 @@ class Error extends Model
         ]);
     }
 
+    /**
+     * An scope for filter approved errors.
+     *
+     * @param Builder $builder
+     * @return void
+     */
     public function scopeApproved(Builder $builder): void
     {
         $builder->where('status', '=', ErrorStatus::Approved);
