@@ -54,6 +54,7 @@ class ErrorResource extends Resource
                     ->hint('Tell us how you solved this error?')
                     ->required()
                     ->columnSpanFull()
+                    ->fileAttachmentsDisk('public')
                     ->fileAttachmentsDirectory('error_screenshots'),
                 Forms\Components\Hidden::make('is_slug_changed_manually')
                     ->default(false)
