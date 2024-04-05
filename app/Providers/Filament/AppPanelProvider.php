@@ -61,6 +61,7 @@ class AppPanelProvider extends PanelProvider
                 $this->app->bind(FilamentLogoutResponse::class, LogoutResponse::class);
                 $this->app->bind(FilamentLoginResponse::class, LoginResponse::class);
             })
+            ->brandLogo(fn () => view('components.logo'))
             ->databaseNotifications();
     }
 }

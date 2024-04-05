@@ -1,7 +1,7 @@
 <nav class="bg-amber-400 max-w-full">
     <div class="max-w-7xl mx-auto p-5">
         <div class="flex items-center justify-between">
-            <a href="/" wire:navigate.hover class="text-xl md:text-2xl lg:text-3xl font-bold">Laravel Errors</a>
+            <x-logo />
             <div class="inline-flex gap-5">
                 <button class="border border-amber-300 rounded-full px-5 py-2 font-semibold hidden sm:inline-flex items-center gap-16 hover:border-amber-200 transition-colors">
                     <div class="inline-flex items-center gap-1">
