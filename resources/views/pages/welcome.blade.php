@@ -23,15 +23,15 @@ state([
                     Laravel errors are not nightmares <br>
                     <span class="text-xl md:text-2xl lg:text-3xl font-semibold leading-none">— if we treat them in the right way.</span>
                 </h1>
-                <div class="max-w-md">
-                    <p class="text-xl text-black font-normal">Our goal is help the Laravel community to find the best solution for the errors they encounter.</p>
+                <div class="max-w-lg">
+                    <p class="text-xl lg:text-2xl text-black font-normal">Our goal is help the Laravel community to find the best solution for the errors they encounter.</p>
                 </div>
                 <div
                     x-data="{ modalOpen: false }"
                     @keydown.escape.window="modalOpen = false"
                     class="inline-flex"
                 >
-                    <x-primary-button @click="modalOpen=true">
+                    <x-primary-button @click="modalOpen=true" class="mt-5">
                         Share your error experience with us
                     </x-primary-button>
                     <template x-teleport="body">
