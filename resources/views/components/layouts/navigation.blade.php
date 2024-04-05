@@ -31,11 +31,13 @@
                             <div
                                 x-cloak
                                 x-show="dropdownIsOpen"
-                                class="absolute z-[99] top-10 right-0 mt-3 bg-amber-50 rounded-lg py-2"
-                                x-transition:enter="transition ease-linear duration-100"
-                                x-transition:enter-start="-translate-y-1 opacity-90"
-                                x-transition:enter-end="translate-y-0 opacity-100"
-                                x-
+                                class="absolute z-[99] top-10 right-0 mt-3 bg-white rounded-lg py-2"
+                                x-transition:enter="transition ease-linear duration-75"
+                                x-transition:enter-start="scale-95 opacity-0"
+                                x-transition:enter-end="scale-100 opacity-100"
+                                x-transition:leave="transition ease-linear duration-75"
+                                x-transition:leave-start="scale-100 opacity-100"
+                                x-transition:leave-end="scale-95 opacity-0"
                             >
                                 <a href="{{ route('filament.app.pages.dashboard') }}" class="block w-full pl-5 pr-20 py-2.5 text-left hover:bg-amber-100 disabled:text-gray-500">Dashboard</a>
                                 <form action="/app/logout" method="post">
