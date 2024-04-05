@@ -8,7 +8,6 @@ migrate-database
 build-assets
 install-prod-dependencies
 optimize
-reload-octane-server
 maintenance-mode-off
 @endstory
 
@@ -30,7 +29,7 @@ composer install --optimize-autoloader --no-dev
 
 @task('maintenance-mode-on')
 cd {{ $path }}
-php artisan down --secret=c2fBxu9p8o
+php artisan down
 @endtask
 
 @task('optimize')
@@ -48,16 +47,6 @@ npm run build
 @task('migrate-database')
 cd {{ $path }}
 php artisan migrate --force
-@endtask
-
-@task('reload-octane-server')
-cd {{ $path }}
-php artisan octane:reload
-@endtask
-
-@task('restart-queue-workers')
-cd {{ $path }}
-php artisan queue:restart
 @endtask
 
 @task('maintenance-mode-off')
