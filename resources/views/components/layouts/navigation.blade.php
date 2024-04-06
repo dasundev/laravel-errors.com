@@ -3,7 +3,9 @@
         <div class="flex items-center justify-between">
             <x-logo />
             <div class="inline-flex items-center gap-5">
-                <div id="search"></div>
+                @persist('search')
+                    <div id="search"></div>
+                @endpersist
                 <div class="inline-flex items-center gap-3">
                     <a href="https://github.com/dasundev/laravel-errors" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24" fill="currentColor" class="text-black hover:text-gray-800 transition-colors">
