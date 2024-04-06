@@ -1,3 +1,7 @@
+:root {
+    --docsearch-primary-color: #65a30d !important;
+}
+
 .DocSearch.DocSearch-Button {
     @apply inline-flex w-auto lg:w-[16rem] items-center ml-0 px-3 p-5 lg:py-[1.3rem] transition bg-amber-400 hover:bg-amber-400 ring-1 hover:ring-1 ring-amber-300 hover:ring-amber-200 rounded-full font-semibold
 }
@@ -26,4 +30,12 @@
 
 .DocSearch-Button-Key--pressed {
     @apply translate-x-0 !important
+}
+
+.DocSearch-Form {
+    @apply ring-2 ring-lime-600 !important
+}
+
+.DocSearch-MagnifierLabel, .DocSearch-Reset {
+    @apply text-lime-600 !important
 }
