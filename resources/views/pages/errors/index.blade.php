@@ -19,7 +19,7 @@ mount(function (Error $error) {
             <x-error :$error class="bg-amber-200 hover:bg-amber-200" />
         </div>
     </div>
-    <div class="prose prose-amber max-w-5xl mx-auto py-10 px-5">
+    <article class="prose prose-amber max-w-5xl mx-auto py-10 px-5">
         @markdown($error->solution)
-    </div>
+    </article>
 </div>
