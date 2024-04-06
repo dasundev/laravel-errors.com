@@ -1,0 +1,29 @@
+.DocSearch.DocSearch-Button {
+    @apply inline-flex w-auto lg:w-[16rem] items-center ml-0 px-3 p-5 lg:py-[1.3rem] transition bg-amber-400 hover:bg-amber-400 ring-1 hover:ring-1 ring-amber-300 hover:ring-amber-200 rounded-full font-semibold
+}
+
+.DocSearch-Search-Icon {
+    @apply stroke-2 w-[17px] h-[17px] !important
+}
+
+.DocSearch-Button-Placeholder {
+    @apply hidden lg:block text-black p-0 font-medium !important
+}
+
+.DocSearch-Button-Container {
+    @apply inline-flex gap-2
+}
+
+.DocSearch-Button-Keys {
+    all: unset !important;
+    @apply hidden lg:block !important
+}
+
+.DocSearch-Button-Key {
+    all: unset !important;
+    @apply text-black font-exception font-medium text-lg !important
+}
+
+.DocSearch-Button-Key--pressed {
+    @apply translate-x-0 !important
+}

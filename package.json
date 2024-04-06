@@ -14,6 +14,7 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "@docsearch/js": "^3.6.0",
         "@tailwindcss/typography": "^0.5.12",
         "shiki": "^1.2.3"
     }
