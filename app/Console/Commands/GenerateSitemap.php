@@ -20,7 +20,7 @@ class GenerateSitemap extends Command
 
         $errors = Error::approved()
             ->pluck('slug')
-            ->map(fn ($slug) => Url::create("/error/$slug"));
+            ->map(fn ($slug) => Url::create("/errors/$slug"));
 
         Sitemap::create()
             ->add($errors)
